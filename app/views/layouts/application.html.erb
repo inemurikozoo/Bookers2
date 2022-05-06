@@ -5,7 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    
+    <script src="https://kit.fontawesome.com/a69f599634.js" crossorigin="anonymous"></script>
     
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -17,21 +17,21 @@
         <span>Bookers</span>
       </a>
       <li>
-        <%= link_to "Home", root_path %>
+        <%= link_to "Home", root_path %><!--NewBookと自分の登録したBook一覧-->
       </li>
         <% if user_signed_in? %>
       <li>
-        <%= link_to "Users", root_path %>
+        <%= link_to "Users", root_path %><!--ユーザーの一覧-->
       </li>
       <li>
-        <%= link_to "Books", root_path %>
+        <%= link_to "Books", books_path %><!--投稿されている本の一覧-->
       </li>
       <li>
         <%= link_to "Log out", destroy_user_session_path, method: :delete %>
       </li>
         <% else %>
       <li>
-        <%= link_to "About", root_path %>
+        <%= link_to "About", about_path %>
       </li>
       <li>
         <%= link_to "Sign up", new_user_registration_path %>

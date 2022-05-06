@@ -6,5 +6,10 @@ class BooksController < ApplicationController
   end
 
   def show
+    
+  end
+  
+  def create
+    
   end
 end
