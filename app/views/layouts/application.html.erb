@@ -13,37 +13,56 @@
 
   <body>
     <header>
-      <a  href="/">
-        <span>Bookers</span>
-      </a>
-      <li>
-        <%= link_to "Home", root_path %><!--NewBookと自分の登録したBook一覧-->
-      </li>
-        <% if user_signed_in? %>
-      <li>
-        <%= link_to "Users", root_path %><!--ユーザーの一覧-->
-      </li>
-      <li>
-        <%= link_to "Books", books_path %><!--投稿されている本の一覧-->
-      </li>
-      <li>
-        <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-      </li>
-        <% else %>
-      <li>
-        <%= link_to "About", about_path %>
-      </li>
-      <li>
-        <%= link_to "Sign up", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "Log in", new_user_session_path %>
-      </li>
-      <% end %>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+        <a class="navbar-brand" href="/">
+          <span>Bookers</span>
+        </a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarNavDropdown" style>
+          <ul class="navbar-nav ml-auto">
+            <li>
+              <%= link_to books_path, class: 'nav-link text-light' do %><i class="fas fa-home"></i> Home<% end %><!--NewBookと自分の登録したBook一覧-->
+              </a>
+            </li>
+              <% if user_signed_in? %>
+            <li>
+              <%= link_to root_path, class: 'nav-link text-light'  do %><i class="fas fa-users"></i> Users<% end%><!--ユーザーの一覧-->
+            </li>
+            <li>
+              <%= link_to books_path, class: 'nav-link text-light'   do %><i class="fas fa-book-open"></i> Books<% end %><!--投稿されている本の一覧-->
+            </li>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-light'  do %><i class="fas fa-sign-out-alt"></i> Log out<% end %>
+            </li>
+              <% else %>
+            <li>
+              <%= link_to about_path, class: 'nav-link text-light'  do %><i class="fas fa-link"></i> About<% end %>
+            </li>
+            <li>
+              <%= link_to new_user_registration_path, class: 'nav-link text-light'  do %><i class="fas fa-user-plus"></i> Sign up<% end %>
+            </li>
+            <li>
+              <%= link_to new_user_session_path, class: 'nav-link text-light'  do %><i class="fas fa-sign-in-alt"></i> Log in<% end %>
+            </li>
+          </ul>
+        <% end %>
+        </div>
+      </nav>
     </header>
+    
     <%= yield %>
+  
+    <footer>
+      <div class="container mt-5">
+        <div class="row">
+          <div class="mx-auto">
+            <p>CopyRight Infratop.inc</p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
-  <footer>
-    <p>CopyRight Infratop.inc</p>
-  </footer>
 </html>
