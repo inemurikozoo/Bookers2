@@ -1,12 +1,15 @@
 class BooksController < ApplicationController
  
+# idはURLから受け取る。
+
   def index
     @book = Book.new
     @books = Book.all
   end
 
   def show
-    
+    @book = Book.new
+    @books = Book.find(params[:id])
   end
   
   def edit
