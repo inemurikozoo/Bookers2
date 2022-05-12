@@ -1,23 +1,27 @@
-<div class="container px-5 px-sm-0">
-<%= render 'users/userinfo', user: @user %>
+<div class="container">
+    <div class="row">
+        <%= render 'users/userinfo', user: @user %>
 
     <div class="col-md-8 offset-md-1">
     <h2>Book detail</h2>
-    <table class="table table-hover table-inverse">
+    <table class="table">
     <tbody>
         <tr>
             <td>
-                <%= image_tag @books.user.get_profile_image(100,100) %>
-                <%= link_to @books.user.name, user_path(@books.user.id) %>
+                <%= link_to user_path(@books.user.id) do%>
+                    <%= image_tag @books.user.get_profile_image(100,100) %><br />
+                    <%= @books.user.name %>
+                <% end %>
             </td>
             <td><%= link_to @books.title, book_path(@books.id) %></td>
             <td><%= @books.body %></td>
-                <% if @book.user == current_user %>
+                <% if @books.user == current_user %>
                     <td><%= link_to edit_book_path(@books.id), class: "btn btn-sm btn-success" do %>Edit<% end %></td>
                     <td><%= link_to destroy_book_path(@books.id), "data-confirm" => "本当に消しますか？", class: "btn btn-sm btn-danger", method: :delete do %>Destroy<% end %></td>
                 <% end %>
         </tr>
     </tbody>
     </table>
+    </div>
     </div>
 </div>
