@@ -1,19 +1,20 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-            <h2>Editing Book</h2>
+            <h1>Editing Book</h1>
+                <%= render "devise/shared/error_messages", resource: @book %>
             <%= form_with model: @book do |f| %>
-            <div class="form-group">
+                <div class="form-group">
                 <label for="book_title">Title</label><br />
-                <%= f.text_field :title, class: "form-control", autofocus: true %>
-            </div>    
+                    <%= f.text_field :title, class: "form-control", autofocus: true %>
+                </div>    
                 <div class="form-group">
                 <label for="opinion">Opinion</label><br />
-                <%= f.text_area :body, class: "form-control book_body", autofocus: true %>
-            </div>
-            <div class="form-group">
-                <%= f.submit 'Update Book', class: "btn btn-success", method: :patch %>
-            </div>
+                    <%= f.text_area :body, class: "form-control book_body", autofocus: true %>
+                </div>
+                <div class="form-group">
+                    <%= f.submit 'Update Book', class: "btn btn-success", method: :patch %>
+                </div>
             <% end %>
                 <p>
                 <%= link_to "Show", book_path(@book.id) %>

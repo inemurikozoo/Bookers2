@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   
+  
   post 'books' => 'books#create', as: 'book_create'
   delete 'books/:id' => 'books#destroy', as: 'destroy_book'
   
